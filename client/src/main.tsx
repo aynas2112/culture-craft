@@ -7,6 +7,7 @@ import Festival from './routes/Festival.tsx'
 import Yoga from './components/Yoga.tsx'
 import Saree from './components/Saree.tsx'
 import About from './routes/About.tsx'
+import Routine from './components/Routine.tsx'
 import './index.css'
 import {
   createBrowserRouter,
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/yoga",
         element: <Yoga />
+      },
+      {
+        path: "/routine",
+        element: <Routine />
       },
       {
         path: "/saree",
