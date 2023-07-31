@@ -5,11 +5,11 @@ import Navbar from './components/Navbar';
 
 function App() {
 	return (
-		<>
-			<div>
-				<Navbar />
-				<Outlet />
-			</div>
+		< >
+				<div className='overflow-y-hidden'>
+					<div className=''><Navbar /></div>
+					<div className=' md:max-w-7xl h-[90vh] m-auto'><Outlet /></div>
+				</div>
 		</>
 	);
 }
