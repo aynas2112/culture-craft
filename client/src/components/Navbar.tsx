@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <AiOutlineMenu onClick={handleNav} className='absolute top-4 right-4 z-[99] md:hidden' />
+      <AiOutlineMenu onClick={handleNav} className='absolute top-4 right-4 z-[99] md:hidden'/>
       {nav ? (
         <div className='fixed w-full h-screen bg-[#fffff0] flex flex-col justify-center items-center z-20'>
           <Link to="/" className='w-[75%] flex justify-center items-center rounded-full shadow-lg bg-[#030244] text-white m-2 p-4 hover:scale-110 ease-in duration-200'>
@@ -39,10 +39,6 @@ const Navbar = () => {
           <Link to="/yoga" className='w-[75%] flex justify-center items-center rounded-full shadow-lg bg-[#030244] text-white m-2 p-4 hover:scale-110 ease-in duration-200'>
             {yogaIcon && <img src={yogaIcon} alt="Yoga" className="w-6 h-6 mr-2" />}
             <span className='pl'>Yoga</span>
-          </Link>
-          <Link to="/saree" className='w-[75%] flex justify-center items-center rounded-full shadow-lg bg-[#030244] text-white m-2 p-4 hover:scale-110 ease-in duration-200'>
-            {sareeIcon && <img src={sareeIcon} alt="Saree" className="w-6 h-6 mr-2" />}
-            <span className='pl'>Saree</span>
           </Link>
           <Link to="/about" className='w-[75%] flex justify-center items-center rounded-full shadow-lg bg-[#030244] text-white m-2 p-4 hover:scale-110 ease-in duration-200'>
             {sareeIcon && <img src={aboutIcon} alt="Saree" className="w-6 h-6 mr-2" />}
@@ -66,11 +62,6 @@ const Navbar = () => {
               <div className="exercise-1">
                 <Link to="/yoga">
                   {yogaIcon && <img src={yogaIcon} alt="Yoga" className="w-6 h-6 rounded-full hover:bg-[#D9D9D9] hover:bg-opacity-50" />}
-                </Link>
-              </div>
-              <div className="saree-1">
-                <Link to="/saree">
-                  {sareeIcon && <img src={sareeIcon} alt="Saree" className="w-6 h-6 rounded-full hover:bg-[#D9D9D9] hover:bg-opacity-50" />}
                 </Link>
               </div>
               <div className="about-1">

@@ -4,8 +4,8 @@ import App from './App.tsx'
 import ErrorPage from './routes/ErrorPage.tsx'
 import Home from './routes/Home.tsx'
 import Festival from './routes/Festival.tsx'
-import Yoga from './components/Yoga.tsx'
-import Saree from './components/Saree.tsx'
+import Yoga from './routes/Yoga.tsx'
+import Saree from './routes/Saree.tsx'
 import About from './routes/About.tsx'
 import Routine from './components/Routine.tsx'
 import './index.css'
@@ -35,10 +35,6 @@ const router = createBrowserRouter([
       {
         path: "/routine",
         element: <Routine />
-      },
-      {
-        path: "/saree",
-        element: <Saree />
       },
       {
         path: "/about",

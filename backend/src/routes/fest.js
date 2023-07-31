@@ -45,8 +45,8 @@ router.post('/upload', upload.array('images', 10), async (req, res)=> {
         const body = req.body;
         const data = new Fest({
             name: body.name,
-            startDate: body.startDate,
-            endDate: body.endDate? body.endDate : null,
+            startDate: new Date(body.startDate),
+            endDate: body.endDate? new Date(body.endDate) : null,
             desc: body.desc,
             img: images,
         })

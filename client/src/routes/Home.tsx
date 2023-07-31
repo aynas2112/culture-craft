@@ -1,10 +1,10 @@
 
-
+import IndiaMap from '../components/IndiaMap'
 
 const Home = () => {
   return (
     <div>
-        <div className='bg'>Hello World</div>
+        <IndiaMap />
     </div>
   )
 }
