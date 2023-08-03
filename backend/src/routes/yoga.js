@@ -3,7 +3,7 @@ const upload = require('../middleware/upload');
 const fs = require('fs');
 const path = require('path');
 const { Yoga } = require('../models/Models');
-const router = express.Router();
+const router = express.Router(); 
 
 // Router logic goes here
 

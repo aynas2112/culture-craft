@@ -6,6 +6,7 @@ const auth = require('./src/middleware/auth');
 const fest_route = require('./src/routes/fest');
 const saree_route = require('./src/routes/saree');
 const yoga_route = require('./src/routes/yoga');
+const pose_route = require('./src/routes/pose');
 
 const app = express();
 const api_router = express.Router();
@@ -23,6 +24,7 @@ app.get('/', (req, res)=>{
 api_router.use('/fest', fest_route);
 api_router.use('/saree', saree_route);
 api_router.use('/yoga', yoga_route);
+api_router.use('/pose', pose_route);
 
 app.use("/api", api_router);
 
