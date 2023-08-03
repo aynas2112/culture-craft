@@ -31,14 +31,20 @@ const SimpleForm = () => {
         <Autocomplete
           id="combo-box-demo"
           options={levels}
-          sx={{ width: 300 }}
+          sx={{ width: 300, my: "0.3em" }}
           renderInput={(params) => <TextField {...params} label="Difficulty" />}
         />
         <Autocomplete
           id="combo-box-demo"
           options={types}
-          sx={{ width: 300 }}
+          sx={{ width: 300, my: "0.3em" }}
           renderInput={(params) => <TextField {...params} label="Type" />}
+        />
+        <Autocomplete sx={{my: "0.3em" }}
+          id="free-solo-demo"
+          freeSolo
+          options={benefits.map((option) => option.label)}
+          renderInput={(params) => <TextField {...params} label="What are you looking for?" />}
         />
         <Button type="submit" variant="contained" color="primary">
           Submit
@@ -48,37 +54,58 @@ const SimpleForm = () => {
   );
 };
 
-const levels = [
-    {
-        labe: "Beginner"
-    },
-    {
-        label: "Intermediate"
-    },
-    {
-        label: "Advanced"
-    }
+const benefits = [
+  {
+    label: "Flexibility",
+  },
+  {
+    label: "Strength",
+  },
+  {
+    label: "Balance",
+  },
+  {
+    label: "Stress Relief",
+  },
+  {
+    label: "Weight Loss",
+  },
+  {
+    label: "Meditation",
+  }
 ]
 
+const levels = [
+  {
+    label: "Beginner",
+  },
+  {
+    label: "Intermediate",
+  },
+  {
+    label: "Advanced",
+  },
+];
+
 const types = [
-    {
-        label: "Hatha"
-    },
-    {
-        label: "Vinyasa"
-    },
-    {
-        label: "Ashtanga"
-    },
-    {
-        label: "Yin"
-    },
-    {
-        label: "Restorative"
-    },
-    {
-        label: "Iyengar"
-    }
-]
+  {
+    label: "Hatha",
+  },
+  {
+    label: "Vinyasa",
+  },
+  {
+    label: "Ashtanga",
+  },
+  {
+    label: "Yin",
+  },
+  {
+    label: "Restorative",
+  },
+  {
+    label: "Iyengar",
+  },
+];
 
 export default SimpleForm;
