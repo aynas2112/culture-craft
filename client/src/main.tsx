@@ -9,11 +9,18 @@ import Saree from './routes/Saree.tsx'
 import About from './routes/About.tsx'
 import Routine from './components/Routine.tsx'
 import Plan from './routes/Plan.tsx'
+import { createStore } from 'jotai'
+import formReducers from './reducers/form.tsx'
+import FormResult from './components/FormResult.tsx'
+import { Provider } from 'jotai';
 import './index.css'
 import {
   createBrowserRouter,
   RouterProvider
 } from 'react-router-dom';
+
+
+const myStore = createStore();
 
 // Renders the routes in our app
 const router = createBrowserRouter([
@@ -42,6 +49,10 @@ const router = createBrowserRouter([
         element: <Plan />
       },
       {
+        path: "/routine/result",
+        element: <FormResult />
+      },
+      {
         path: "/about",
         element: <About />
       }
@@ -52,6 +63,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
+    <Provider store={myStore}>
     <RouterProvider router={router}/>
+    </Provider>
   </React.StrictMode>,
 )

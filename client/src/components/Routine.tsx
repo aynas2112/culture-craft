@@ -5,9 +5,8 @@ import './Routine.css'
 
 const Routine = () => {
   return (
-    <Container>
         <Form />
-    </Container>
+
 
   )
 }

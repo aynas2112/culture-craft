@@ -13,7 +13,7 @@ const api_router = express.Router();
 
 app.use(cors());
 app.use(express.json())
-app.use(auth);
+// app.use(auth);
 
 const port = process.env.PORT;
 

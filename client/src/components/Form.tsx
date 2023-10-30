@@ -1,28 +1,38 @@
 import React, { useState } from "react";
-import { TextField, Button, Box } from "@mui/material";
+import { TextField, Button, Box, Container } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
-import { useDispatch } from "react-redux";
-import { createPose } from "../actions/form";
+import { atom, useAtom } from 'jotai' 
+import { createPose} from '../api/index.tsx'
+import { Link } from "react-router-dom";
+import FormResult from "./FormResult.tsx";
 
 
+// const onlineFriends = atom((get) => get(friendsStatus).filter((item) => item.online));
+const formAtom = atom({difficulty: "", type: "", benefits: ""})
+const responseAtom = atom({body: ""})
 const SimpleForm = () => {
-  console.log("SimpleForm");
-  
-  const [formData, setFormData] = useState({
-    difficulty: "",
-    type: "",
-    benefits: "",
-  });
-  const dispatch = useDispatch();
+  const [formData, setFormData] = useAtom(formAtom);
+  const [responseData, setResponseData] = useAtom(responseAtom);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(formData);
-    dispatch(createPose(formData));
-    
+    try {
+      const responseData = await createPose(formData);
+      console.log('POST request response:', responseData.status, responseData.statusText);
+      console.log(responseData.data.data);
+      setResponseData({...responseData, body: responseData.data.data.content})
+      
+      // Handle the response data as needed
+    } catch (error) {
+      console.log(error);
+      
+    }
   };
 
   return (
+    <>
+    {responseData.body ? <FormResult body={responseData.body}/> :(
       <Box
         display="flex"
         flexDirection="column"
@@ -40,7 +50,7 @@ const SimpleForm = () => {
           />
           <Autocomplete
             id="combo-box-demo"
-            options={levels}
+            options={levels.map((option) => option.label)}
             sx={{ width: 300, my: "0.3em" }}
             onChange={(e,value)=> setFormData({...formData, difficulty: value.toString()})}
             renderInput={(params) => (
@@ -50,7 +60,7 @@ const SimpleForm = () => {
           />
           <Autocomplete
             id="combo-box-demo"
-            options={types}
+            options={types.map((option) => option.label)}
             sx={{ width: 300, my: "0.3em" }}
             onChange={(e,value)=> setFormData({...formData, type: value.toString()})}
             renderInput={(params) => <TextField {...params} label="Type"/>}
@@ -67,10 +77,12 @@ const SimpleForm = () => {
             )}
           />
           <Button type="submit" variant="contained" color="primary">
-            Submit
+          Submit
           </Button>
         </form>
-      </Box>
+
+      </Box>)}
+    </>
   );
 };
 
@@ -109,23 +121,20 @@ const levels = [
 
 const types = [
   {
-    label: "Hatha",
+    label: "Balancing",
   },
   {
-    label: "Vinyasa",
+    label: "Forward Bend",
   },
   {
-    label: "Ashtanga",
+    label: "Lateral Bend",
   },
   {
-    label: "Yin",
+    label: "Neutral",
   },
   {
-    label: "Restorative",
-  },
-  {
-    label: "Iyengar",
-  },
+    label: "Twist",
+  }
 ];
 
 export default SimpleForm;
